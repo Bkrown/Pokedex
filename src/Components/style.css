@@ -1,0 +1,134 @@
+.contenedor {
+    display: flex;
+    width: 600px;
+    height: 600px;
+    background-color: grey;
+    border-radius: 20px 50% 50% 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.4);
+}
+
+h4 {
+    line-height: 0.4em;
+}
+
+h1 {
+    color: hsla(0, 0%, 0%, .1);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    animation: move linear 10000ms infinite;
+    margin: 0px;
+}
+
+@keyframes move {
+    0% {
+        text-shadow:
+            4px -4px 0 hsla(0, 100%, 50%, .07),
+            3px -3px 0 hsla(0, 100%, 50%, .07),
+            2px -2px 0 hsla(0, 100%, 50%, .07),
+            1px -1px 0 hsla(0, 100%, 50%, .07),
+            -4px 4px 0 hsla(180, 100%, 50%, .07),
+            -3px 3px 0 hsla(180, 100%, 50%, .07),
+            -2px 2px 0 hsla(180, 100%, 50%, .07),
+            -1px 1px 0 hsla(180, 100%, 50%, .07);
+    }
+
+    25% {
+        text-shadow:
+            -4px -4px 0 hsla(180, 100%, 50%, .07),
+            -3px -3px 0 hsla(180, 100%, 50%, .07),
+            -2px -2px 0 hsla(180, 100%, 50%, .07),
+            -1px -1px 0 hsla(180, 100%, 50%, .07),
+            4px 4px 0 hsla(0, 100%, 50%, .07),
+            3px 3px 0 hsla(0, 100%, 50%, .07),
+            2px 2px 0 hsla(0, 100%, 50%, .07),
+            1px 1px 0 hsla(0, 100%, 50%, .07);
+    }
+
+    50% {
+        text-shadow:
+            -4px 4px 0 hsla(0, 100%, 50%, .07),
+            -3px 3px 0 hsla(0, 100%, 50%, .07),
+            -2px 2px 0 hsla(0, 100%, 50%, .07),
+            -1px 1px 0 hsla(0, 100%, 50%, .07),
+            4px -4px 0 hsla(180, 100%, 50%, .07),
+            3px -3px 0 hsla(180, 100%, 50%, .07),
+            2px -2px 0 hsla(180, 100%, 50%, .07),
+            1px -1px 0 hsla(180, 100%, 50%, .07);
+    }
+
+    75% {
+        text-shadow:
+            4px 4px 0 hsla(180, 100%, 50%, .07),
+            3px 3px 0 hsla(180, 100%, 50%, .07),
+            2px 2px 0 hsla(180, 100%, 50%, .07),
+            1px 1px 0 hsla(180, 100%, 50%, .07),
+            -4px -4px 0 hsla(0, 100%, 50%, .07),
+            -3px -3px 0 hsla(0, 100%, 50%, .07),
+            -2px -2px 0 hsla(0, 100%, 50%, .07),
+            -1px -1px 0 hsla(0, 100%, 50%, .07);
+    }
+
+    100% {
+        text-shadow:
+            4px -4px 0 hsla(0, 100%, 50%, .07),
+            3px -3px 0 hsla(0, 100%, 50%, .07),
+            2px -2px 0 hsla(0, 100%, 50%, .07),
+            1px -1px 0 hsla(0, 100%, 50%, .07),
+            -4px 4px 0 hsla(180, 100%, 50%, .07),
+            -3px 3px 0 hsla(180, 100%, 50%, .07),
+            -2px 2px 0 hsla(180, 100%, 50%, .07),
+            -1px 1px 0 hsla(180, 100%, 50%, .07);
+    }
+}
+
+p {
+    line-height: 0.4em;
+    text-align: right;
+    padding-right: 30px;
+    margin: -2px -8px 15px;
+    color: hsla(180, 100%, 50%, .07);
+    text-shadow: 1px 1px 1px hsla(0, 100%, 1%, 0.501);
+
+}
+
+.card {
+    color: rgb(0, 0, 0);
+    min-width: 300px;
+}
+
+.info {
+    text-align: left;
+}
+
+.cont-img {
+    align-self: center;
+    text-align: center;
+    justify-self: center;
+}
+
+img {
+    max-width: 400px;
+}
+
+input {
+    border: none;
+    font-size: 20px;
+    height: auto;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    width: 80%;
+    background-color: grey;
+    color: black;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) inset;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.botones {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
