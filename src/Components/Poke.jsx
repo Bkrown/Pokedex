@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from "react";
 import { useState } from "react";
 import './style.css'
+import Swal from 'sweetalert2'
 
 
 export const Poke = () => {
@@ -9,8 +10,7 @@ export const Poke = () => {
     const [pokemon, setPokemon] = useState(null);
     const [id, setId] = useState(1);
     const [busqueda, setBusqueda] = useState("");
-    const [evolucion, setEvolucion] = useState(null);
-
+    // const [evolucion, setEvolucion] = useState(null);
 
     //Hacemos la petición
     useEffect(() => {
@@ -36,17 +36,17 @@ export const Poke = () => {
             }).catch(error => {
                 console.error('Error en la primera solicitud:', error);
             });
-        fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}/`)
-            .then((res) => res.json())//Promesa para que sea en formato json
-            .then((data) => {//Promesa para el formato
-                setEvolucion({
-                    //Adjuntamos el objeto JSON numero - nombre - imagen
-                    id: data.id,
-                    evolucion: data.chain.evolves_to[0].species.name
-                })
-            }).catch(error => {
-                console.error('Error en la segunda solicitud:', error);
-            });
+        // fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}/`)
+        //     .then((res) => res.json())//Promesa para que sea en formato json
+        //     .then((data) => {//Promesa para el formato
+        //         setEvolucion({
+        //             //Adjuntamos el objeto JSON numero - nombre - imagen
+        //             id: data.id,
+        //             evolucion: data.chain.evolves_to[0].species.name
+        //         })
+        //     }).catch(error => {
+        //         console.error('Error en la segunda solicitud:', error);
+        //     });
     }, [id])
 
 
@@ -64,6 +64,9 @@ export const Poke = () => {
         e.preventDefault();
         //Validamos el comienzo 
         if (busqueda.length > 1) {
+
+            const num = id > 1 && setId(id - 1)
+
             setPokemon(null)
             fetch(`https://pokeapi.co/api/v2/pokemon/${busqueda}/`)
                 .then((res) => res.json())
@@ -79,19 +82,19 @@ export const Poke = () => {
                     )
                 })
                 .catch(error => {
-                    alert("|| " + busqueda + " || No es un pokemon válido")
-                    console.error('Error en la primera solicitud:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: '"' + busqueda + '" no es un pokemon válido!'
+                    })
+                    //setBusqueda("".target.value);
+                    setBusqueda(num);
+                    //alert("|| " + busqueda + " || No es un pokemon válido")
+                    console.error('Error en la primera solicitud:' + num + " | ", error);
                 });
-            // setBusqueda("".target.value);
+
         }
 
     }
-
-
-    // function capitalizarPrimeraLetra(str) {
-    //     return str.charAt(0).toUpperCase() + str.slice(1);
-    // }
-
 
 
 
@@ -117,23 +120,22 @@ export const Poke = () => {
 
                     {/* Visualizamo que cargue  */}
                     {
-                        !pokemon ? <h5>Cargando...</h5> :
-                            !evolucion ? <h5>Cargando...</h5> :
-                                <>
-                                    <div className='info'>
-                                        <h2>{pokemon.nombre}</h2>
-                                        <h4>Peso: {pokemon.peso} Kgs</h4>
-                                        <h4>Altura: {pokemon.altura}0 cms</h4>
-                                        <h4>Tipo: {pokemon.tipo}</h4>
-                                        <h4>Evolucion: {evolucion.evolucion}</h4>
-                                        <h4>Experiencia: {pokemon.experiencia}</h4>
-                                        <h4>HP: {pokemon.hp}</h4>
-                                        <h4>Ataque: {pokemon.ataque}</h4>
-                                        <h4>Defensa: {pokemon.defensa}</h4>
-                                        <h4>Especial: {pokemon.especial}</h4>
-                                    </div>
+                        !pokemon ? <div className="loader"> </div> :
+                            <>
+                                <div className='info'>
+                                    <h2>{pokemon.nombre}</h2>
+                                    <h4>Peso: {pokemon.peso} Kgs</h4>
+                                    <h4>Altura: {pokemon.altura}0 cms</h4>
+                                    <h4>Tipo: {pokemon.tipo}</h4>
+                                    {/* <h4>Evolucion: {evolucion.evolucion}</h4> */}
+                                    <h4>Experiencia: {pokemon.experiencia}</h4>
+                                    <h4>HP: {pokemon.hp}</h4>
+                                    <h4>Ataque: {pokemon.ataque}</h4>
+                                    <h4>Defensa: {pokemon.defensa}</h4>
+                                    <h4>Especial: {pokemon.especial}</h4>
+                                </div>
 
-                                </>
+                            </>
                     }
                 </div>
                 <div className="cont-img">
